@@ -1,0 +1,30 @@
+﻿@using BlazoredFluentValidationBug.Models
+@using BlazoredFluentValidationBug.ViewHelpers
+
+<EditForm Model="@_model">
+
+    <Blazored.FluentValidation.FluentValidationValidator Validator="@_validator"/>
+
+    <div class="form-group">
+        <label for="FirstName">First Name</label>
+        <InputText id="FirstName" class="form-control" placeholder="First Name"
+                   @bind-Value="@_model.Name" />
+    </div>
+
+    <div class="form-group">
+        <label for="LastName">Address > County</label>
+        <InputText id="LastName" class="form-control" placeholder="Address > County"
+                   @bind-Value="@_model.Address.County" />
+    </div>
+
+    <ValidationSummary></ValidationSummary>
+
+</EditForm>
+
+@code {
+
+    private Customer _model = new Customer();
+
+    private CustomerValidator _validator = new CustomerValidator();
+
+}
